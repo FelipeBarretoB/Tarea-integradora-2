@@ -3,9 +3,15 @@ import java.util.Scanner;
 import model.MSC; 
 public class Main{
 	
+	//The scanner of the class
 	private Scanner sc;
+	//The object of the class MSC
 	private MSC msc;
 	
+	/**
+	*default constructor of the class Main
+	*the initiation of the Scanner and MSC objecto
+	*/
 	public Main(){
 		sc= new Scanner(System.in);
 		msc=new MSC();
@@ -24,6 +30,12 @@ public class Main{
 		
 	}
 	
+	/**
+	*The method prints a menu<br>
+    *<b>pre:  </b> 
+	*<b>post: </b>
+	*@return int, the option the user selected 
+	*/
 	public int showMenu() {
 		
 		int option=0;
@@ -47,6 +59,11 @@ public class Main{
 		return option;
 	}
 	
+	/**
+	*The method prints a the logo of the program<br>
+    *<b>pre:  </b> 
+	*<b>post: </b>
+	*/
 	public void printLogo(){
 		System.out.println(
 		"(((((((((((((((((((((((((((((((((((((((((((((((((\n"+
@@ -91,6 +108,12 @@ public class Main{
 		
 	}
 	
+	/**
+	*The method prints a menu<br>
+    *<b>pre:  the creation of the methods: giveUserInfo, showUsers, giveSongInfo, showSongs, showPlaylistMenu, giveAddSongInfo, ratePlaylist and showPlaylist </b> 
+	*<b>post: </b>
+	*@param operation, the int that represents the option the user chose in the method showMenu
+	*/
 	public void executeOperation(int operation) {
 		
 		switch(operation) {
@@ -146,6 +169,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method asks for all the information needed to create an object from the class User, and gives it to the createUser method from the class MSC<br>
+    *<b>pre:The creation of the method createUser and hasUserSpace from the class MSC </b> 
+	*<b>post: </b>
+	*/
 	public void giveUserInfo(){
 		if(msc.hasUserSpace()){
 			System.out.println("Cual es el apodo del usuario?");
@@ -162,6 +190,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method prints a the users that have been created<br>
+    *<b>pre:The creation of the methods getUserName, getUserAge and getUserCategory from the class MSC  </b> 
+	*<b>post: </b>
+	*/
 	public void showUsers(){
 		for(int c=0; c<msc.getUserCreated();c++){
 			System.out.println("*************  User *************** \n"+
@@ -172,6 +205,12 @@ public class Main{
 			System.out.println("\n");
 		}
 	}
+	
+	/**
+	*The method asks for all the information needed to create an object from the class Songs, and gives it to the createSong method from the class MSC <br>
+    *<b>pre: The creation of the method createSong and hasSongSpace from the class MSC </b> 
+	*<b>post: </b>
+	*/
 	public void giveSongInfo(){
 		if(msc.hasSongSpace()){
 			System.out.println("Cual usuario compartio una cancion?");
@@ -200,7 +239,11 @@ public class Main{
 			System.out.println("No hay espacio para más canciones");
 		}
 	}
-	
+	/**
+	*The method prints all the information of the songs that have been added<br>
+    *<b>pre: The creation of the method getTitle, getArtist, getDuration and getGenre from the class MSC </b> 
+	*<b>post: </b>
+	*/
 	public void showSongs(){
 		for(int c=0; c<msc.getSongCreated();c++){
 			System.out.println("**************  Song ************** \n"+
@@ -213,6 +256,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method lets the user choose what type of playlist he wants to create<br>
+    *<b>pre: The creation of the method givePrivatePlaylistInfo, givePublicPlaylistInfo and giveRestrictedPlaylistInfo </b> 
+	*<b>post: </b>
+	*/
 	public void showPlaylistMenu() {
 		int operation=0;
 
@@ -254,7 +302,11 @@ public class Main{
 		}
 	}
 	
-	
+	/**
+	*The method asks for all the information needed to create an object from the subclass PublicPlaylist, and gives it to the createPublicPlaylist method from the class MSC  <br>
+    *<b>pre: The creation of the method createPublicPlaylist </b> 
+	*<b>post: </b>
+	*/
 	public void givePublicPlaylistInfo(){
 		if(msc.hasPlayListSpace()){
 			System.out.println("Cual es el nombre de la playlist publica?");
@@ -265,6 +317,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method asks for all the information needed to create an object from the subclass PrivatePlaylist, and gives it to the createPrivatePlaylist method from the class MSC  <br>
+    *<b>pre: The creation of the method createPrivatePlaylist </b> 
+	*<b>post: </b>
+	*/
 	public void givePrivatePlaylistInfo(){
 		if(msc.hasPlayListSpace()){
 			System.out.println("Cual es el nombre de la playlist privada?");
@@ -281,6 +338,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method asks for all the information needed to add a song to a Playlist, using the playlistAddSong method from the class MSC  <br>
+    *<b>pre: The creation of the method playlistAddSong, findPlaylist and verifyUser </b> 
+	*<b>post: </b>
+	*/
 	public void giveAddSongInfo(){
 		System.out.println("Cual es el nombre del usuario");
 		String name=sc.nextLine();
@@ -303,6 +365,11 @@ public class Main{
 		}
 	}
 	
+	/**
+	*The method asks for all the information needed to rate a playList, and gives it to the ratePlaylist method from the class MSC  <br>
+    *<b>pre: The creation of the method findPlaylist and ratePlaylist </b> 
+	*<b>post: </b>
+	*/
 	public void ratePlaylist(){
 		System.out.println("A cual playlist le desea dar calificacion?");
 		String playlistName=sc.nextLine();
@@ -321,6 +388,11 @@ public class Main{
 		
 	}
 	
+	/**
+	*The method asks for all the information needed to create an object from the subclass RestrictedPlaylist, and gives it to the createRestrictedPlaylist method from the class MSC  <br>
+    *<b>pre: The creation of the methods userExists and createRestrictedPlaylist </b> 
+	*<b>post: </b>
+	*/
 	public void giveRestrictedPlaylistInfo(){
 		if(msc.hasPlayListSpace()){
 			String[] permitedUsers=new String[5];
@@ -348,6 +420,11 @@ public class Main{
 		}
 	}
 
+	/**
+	*The method prints the playlist that have been create, using the getPlaylist method from the class MSC  <br>
+    *<b>pre: The creation of the method getPlaylist </b> 
+	*<b>post: </b>
+	*/
 	public void showPlaylist(){
 		System.out.print( msc.getPlaylist());
 	}
